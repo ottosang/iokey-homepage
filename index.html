@@ -34,13 +34,18 @@
         li { margin-bottom: 8px; }
         .sub-list { margin-top: 10px; margin-bottom: 20px; }
         
-        /* 추가된 하이라이트 박스 디자인 */
+        /* 하이라이트 박스 및 데모 박스 디자인 */
         .info-box { background: #fdfaf0; border-left: 4px solid #f1c40f; padding: 10px 15px; margin-top: 5px; font-size: 15px; color: #555; }
+        .demo-box { margin-top: 40px; padding: 30px; background-color: #f4f9ff; border-radius: 15px; border: 2px dashed #0056b3; text-align: center; }
+        .demo-box h3 { color: #003366; margin-top: 0; font-size: 22px; }
+        .demo-btn { display: inline-block; padding: 15px 40px; background-color: var(--accent); color: white; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 20px; box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3); transition: transform 0.2s, background-color 0.2s; }
+        .demo-btn:hover { background-color: #e63e00; transform: translateY(-2px); color: white; }
+        .demo-image { width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 25px; border: 3px solid #0056b3; transition: transform 0.3s; cursor: pointer; }
+        .demo-image:hover { transform: scale(1.02); }
     </style>
 </head>
 <body>
 
-<!-- 접근 보안 화면 -->
 <div id="pw-screen">
     <div class="pw-box">
         <h1>Running Guide System</h1>
@@ -58,7 +63,6 @@
     </div>
 </div>
 
-<!-- 메인 제안서 내용 -->
 <div id="main-content" style="display:none;" class="content">
     <h1>스마트 러닝 가이드 시스템 사업 제안서</h1>
     
@@ -79,6 +83,19 @@
         <img src="Gemini_Generated_Image_mpzvjbmpzvjbmpzv.png" alt="키오스크 제작 도면">
     </div>
 
+    <div class="demo-box">
+        <h3>🎯 스마트 페이싱 키오스크 UI 데모 체험</h3>
+        <p style="font-size: 16px; margin-bottom: 25px;">아래 데모 화면 이미지를 클릭하시거나 버튼을 누르시면, 실제 러닝 트랙 입구에 설치될 <b>키오스크의 사용자 인터페이스(UI) 데모</b>를 웹에서 직접 체험해 보실 수 있습니다.</p>
+        
+        <a href="https://run-4sy.pages.dev/" target="_blank">
+            <img src="kiosk_demo_main.png" alt="키오스크 데모 첫 화면" class="demo-image" onerror="this.src='Gemini_Generated_Image_eirstgeirstgeirs.png'; this.onerror=null; this.alt='데모 스크린샷 준비중';">
+        </a>
+        <br>
+        
+        <a href="https://run-4sy.pages.dev/" target="_blank" class="demo-btn">
+            👉 키오스크 데모 실행하기 (클릭)
+        </a>
+    </div>
     <h2>3. 핵심 시스템 구성 및 운영</h2>
     <table>
         <tr><th>구분</th><th>단계</th><th>주요 내용</th></tr>
@@ -87,7 +104,6 @@
         <tr><td>통합 관리</td><td>3단계</td><td>4,000개 모듈의 중앙 통합 관제 및 데이터 분석</td></tr>
     </table>
 
-    <!-- 신규 추가 내용 -->
     <h2>4. 시스템 작동 원리 (빛을 제어하는 방식)</h2>
     <p>시스템이 트랙 위에서 페이스를 가이드하는 기본적인 작동 메커니즘은 다음과 같습니다.</p>
     <ul>
@@ -107,7 +123,6 @@
         </div>
         </li>
     </ul>
-    <!-- 신규 추가 내용 끝 -->
 
     <h2>5. 기술적 난제 해결 및 고도화 전략</h2>
     <table>
