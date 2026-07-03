@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>스마트 러닝 가이드 시스템 제안서 | (주)디앤테크</title>
+    <title>스마트 러닝 가이드 시스템 사업 제안서 | (주)디앤테크</title>
     <style>
-        :root { --primary: #003366; --accent: #ff4500; --dark: #121212; --light: #f8f9fa; }
+        /* accent 색상을 붉은색에서 맑고 편안한 스카이 블루 계열(#4a90e2)로 변경했습니다 */
+        :root { --primary: #003366; --accent: #4a90e2; --dark: #121212; --light: #f8f9fa; }
         body { font-family: 'Pretendard', sans-serif; line-height: 1.8; color: #333; margin: 0; background: var(--light); }
         
         /* 1. 보안 접근 페이지 */
@@ -34,13 +35,13 @@
         li { margin-bottom: 8px; }
         .sub-list { margin-top: 10px; margin-bottom: 20px; }
         
-        /* 하이라이트 박스 및 데모 박스 디자인 */
+        /* 하이라이트 박스 및 데모 박스 디자인 (편안한 색상으로 수정) */
         .info-box { background: #fdfaf0; border-left: 4px solid #f1c40f; padding: 10px 15px; margin-top: 5px; font-size: 15px; color: #555; }
-        .demo-box { margin-top: 40px; padding: 30px; background-color: #f4f9ff; border-radius: 15px; border: 2px dashed #0056b3; text-align: center; }
-        .demo-box h3 { color: #003366; margin-top: 0; font-size: 22px; }
-        .demo-btn { display: inline-block; padding: 15px 40px; background-color: var(--accent); color: white; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 20px; box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3); transition: transform 0.2s, background-color 0.2s; }
-        .demo-btn:hover { background-color: #e63e00; transform: translateY(-2px); color: white; }
-        .demo-image { width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 25px; border: 3px solid #0056b3; transition: transform 0.3s; cursor: pointer; }
+        .demo-box { margin-top: 60px; padding: 40px 30px; background-color: #f0f7ff; border-radius: 15px; border: 2px dashed #4a90e2; text-align: center; }
+        .demo-box h3 { color: #003366; margin-top: 0; font-size: 26px; }
+        .demo-btn { display: inline-block; padding: 15px 40px; background-color: var(--accent); color: white; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 20px; box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3); transition: transform 0.2s, background-color 0.2s; }
+        .demo-btn:hover { background-color: #357abd; transform: translateY(-2px); color: white; }
+        .demo-image { width: 100%; max-width: 600px; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); margin-bottom: 25px; border: 3px solid #4a90e2; transition: transform 0.3s; cursor: pointer; }
         .demo-image:hover { transform: scale(1.02); }
     </style>
 </head>
@@ -52,7 +53,6 @@
         <p>프로젝트 제안서 접속</p>
         
         <input type="password" id="pw-input" placeholder="비밀번호를 입력하세요">
-        
         <button id="login-btn">문서접근</button>
         
         <div class="legal-notice">
@@ -79,23 +79,10 @@
     <div class="grid">
         <img src="Gemini_Generated_Image_eirstgeirstgeirs.png" alt="시스템 구성">
         <img src="Gemini_Generated_Image_i7jiw5i7jiw5i7ji.png" alt="기술 도면">
-        <img src="스크린샷 2026-07-02 오후 7.03.27.png" alt="제품 프로토타입 디자인">
+        <img src="스크린샷 2026-07-02 오후 7.03.27.png" alt="제품 프로토타입 디자인">
         <img src="Gemini_Generated_Image_mpzvjbmpzvjbmpzv.png" alt="키오스크 제작 도면">
     </div>
 
-    <div class="demo-box">
-        <h3>스마트 페이싱 키오스크 UI 데모 </h3>
-        <p style="font-size: 16px; margin-bottom: 25px;">아래 데모 화면 이미지를 클릭하시거나 버튼을 누르시면, 실제 러닝 트랙 입구에 설치될 <b>키오스크의 사용자 인터페이스(UI) 데모</b>를 웹에서 직접 체험해 보실 수 있습니다.</p>
-        
-        <a href="https://run-4sy.pages.dev/" target="_blank">
-            <img src="kiosk_demo_main.png" alt="키오스크 데모 첫 화면" class="demo-image" onerror="this.src='Gemini_Generated_Image_eirstgeirstgeirs.png'; this.onerror=null; this.alt='데모 스크린샷 준비중';">
-        </a>
-        <br>
-        
-        <a href="https://run-4sy.pages.dev/" target="_blank" class="demo-btn">
-            키오스크 데모(안) 화면 보기
-        </a>
-    </div>
     <h2>3. 핵심 시스템 구성 및 운영</h2>
     <table>
         <tr><th>구분</th><th>단계</th><th>주요 내용</th></tr>
@@ -195,7 +182,7 @@
     <h2>10. 제안사 소개 및 주요 실적</h2>
     <p><b>(주)디앤테크</b>는 30년 이상의 보안 및 제어 시스템 구축 노하우를 가진 IoT 전문 기업입니다. 현실 공간을 제어하는 고도화된 솔루션을 제공합니다. (<a href="http://www.iokey.io" target="_blank">www.iokey.io</a>)</p>
     
-    <img src="스크린샷 2026-07-02 오후 10.28.35.jpg" alt="디앤테크 회사 소개" style="width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid #ddd;">
+    <img src="스크린샷 2026-07-02 오후 10.28.35.png" alt="디앤테크 회사 소개" style="width: 100%; border-radius: 10px; margin: 20px 0; border: 1px solid #ddd;">
     
     <ul>
         <li>금강산 관광지역 전체 페이먼트 시스템</li>
@@ -207,7 +194,21 @@
 
     <h2>11. 기대 효과 및 비전</h2>
     <p>본 사업은 단순한 조명 설치를 넘어 스마트 시티 인프라의 미래상을 제시합니다. 전국 러너들이 방문하는 '러닝 성지' 조성을 통해 지역 관광 활성화 및 시민 삶의 질 향상을 도모합니다.</p>
-</div>
+
+    <div class="demo-box">
+        <h3>🎯 스마트 페이싱 키오스크 UI 데모 체험</h3>
+        <p style="font-size: 16px; margin-bottom: 25px;">아래 데모 화면 이미지를 클릭하시거나 버튼을 누르시면, 실제 러닝 트랙 입구에 설치될 <b>키오스크의 사용자 인터페이스(UI) 데모</b>를 웹에서 직접 체험해 보실 수 있습니다.</p>
+        
+        <a href="https://run-4sy.pages.dev/" target="_blank">
+            <img src="Gemini_Generated_Image_eirstgeirstgeirs(1).png" alt="키오스크 데모 화면" class="demo-image" onerror="this.src='Gemini_Generated_Image_eirstgeirstgeirs.png'; this.onerror=null; this.alt='데모 스크린샷 준비중';">
+        </a>
+        <br>
+        
+        <a href="https://run-4sy.pages.dev/" target="_blank" class="demo-btn">
+            👉 키오스크 데모 실행하기 (클릭)
+        </a>
+    </div>
+    </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
