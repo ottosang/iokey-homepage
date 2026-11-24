@@ -664,7 +664,8 @@
         function fmtLaps(m) {
             const v = Math.round((m / LAP_METERS) * 100) / 100;
             const n = v.toLocaleString('en-US', { maximumFractionDigits: 2 });
-            return currentLang === 'ko' ? `${n}${t().lapUnit}` : `${n} ${t().lapUnit}`;
+            if (currentLang === 'ko') return `${n}${t().lapUnit}`;
+            return `${n} ${v === 1 ? 'lap' : t().lapUnit}`;
         }
 
         function currentMeters() {
