@@ -141,6 +141,33 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
 
+        /* 직접 입력(커스텀 거리) 버튼 */
+        .custom-btn {
+            grid-column: 1 / -1;
+            flex-direction: row;
+            gap: 12px;
+            padding: 16px 14px;
+            border-style: dashed;
+            border-color: #555;
+        }
+
+        .custom-btn.selected {
+            border-style: solid;
+            border-color: var(--dynamic-color);
+            box-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+        }
+
+        .custom-btn .custom-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dynamic-color);
+            display: none;
+        }
+
+        .custom-btn.has-value .custom-value {
+            display: inline;
+        }
+
         .color-dot {
             width: 16px;
             height: 16px;
@@ -161,6 +188,194 @@
             font-size: 0.9rem;
             opacity: 0.8;
             color: var(--text-main);
+        }
+
+        /* 원하는 거리 직접 입력 패널 (스크롤 휠 피커) */
+        #customPanel {
+            display: none;
+            margin-top: 18px;
+            padding: 18px 18px 22px;
+            background-color: var(--panel-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+        }
+
+        #customPanel.open {
+            display: block;
+        }
+
+        .custom-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .custom-head .label {
+            font-size: 1rem;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .custom-head .hint {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .custom-close {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-sub);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+            flex: none;
+        }
+
+        .picker-layout {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .picker-wrap {
+            position: relative;
+            flex: 1;
+            max-width: 420px;
+            height: 220px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .picker-band {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 88px;
+            height: 44px;
+            border-top: 1px solid var(--dynamic-color);
+            border-bottom: 1px solid var(--dynamic-color);
+            background: rgba(255, 255, 255, 0.06);
+            pointer-events: none;
+            z-index: 2;
+            transition: border-color 0.3s;
+        }
+
+        .picker-wrap::before,
+        .picker-wrap::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 88px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .picker-wrap::before {
+            top: 0;
+            background: linear-gradient(to bottom, var(--panel-bg) 15%, rgba(26, 26, 26, 0) 100%);
+        }
+
+        .picker-wrap::after {
+            bottom: 0;
+            background: linear-gradient(to top, var(--panel-bg) 15%, rgba(26, 26, 26, 0) 100%);
+        }
+
+        .picker {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            padding: 88px 0;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            overscroll-behavior: contain;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .picker::-webkit-scrollbar {
+            display: none;
+        }
+
+        .picker-item {
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            scroll-snap-align: center;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-sub);
+            opacity: 0.5;
+            cursor: pointer;
+            transition: color 0.15s, opacity 0.15s;
+        }
+
+        .picker-item .lap {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .picker-item.active {
+            color: var(--text-main);
+            opacity: 1;
+        }
+
+        .picker-item.active .lap {
+            color: var(--dynamic-color);
+        }
+
+        .step-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+            flex: none;
+        }
+
+        .step-btn {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .step-btn:active {
+            transform: scale(0.96);
+        }
+
+        .readout {
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        .readout-laps {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--dynamic-color);
+            line-height: 1.1;
+            transition: color 0.3s;
+        }
+
+        .readout-sub {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-top: 6px;
         }
 
         footer {
@@ -240,6 +455,18 @@
             display: none;
         }
 
+        .run-summary {
+            margin-top: 26px;
+            font-size: 1.05rem;
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            padding: 10px 22px;
+            max-width: 90vw;
+            text-align: center;
+        }
+
         @media (max-width: 600px) {
             .grid-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -250,6 +477,10 @@
             .title { font-size: 1.2rem; }
             .start-btn { font-size: 1.5rem; padding: 20px; }
             .countdown-number { font-size: 8rem; }
+            .picker-wrap { max-width: none; }
+            .picker-item { font-size: 1.05rem; }
+            .readout-laps { font-size: 2rem; }
+            .step-btn { padding: 9px 10px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -267,6 +498,34 @@
         <section>
             <div class="section-title" id="courseTitle">코스 선택</div>
             <div class="grid-container" id="courseGrid"></div>
+
+            <div id="customPanel">
+                <div class="custom-head">
+                    <div class="label">
+                        <span id="customLabel">원하는 거리 선택</span>
+                        <span class="hint" id="customHint">위아래로 스크롤하세요</span>
+                    </div>
+                    <button class="custom-close" id="customClose" onclick="closeCustom()" aria-label="close">✕</button>
+                </div>
+
+                <div class="picker-layout">
+                    <div class="step-col">
+                        <button class="step-btn" id="stepUp" onclick="stepLaps(1)">+ 1</button>
+                    </div>
+                    <div class="picker-wrap">
+                        <div class="picker-band"></div>
+                        <div class="picker" id="distancePicker" tabindex="0"></div>
+                    </div>
+                    <div class="step-col">
+                        <button class="step-btn" id="stepDown" onclick="stepLaps(-1)">− 1</button>
+                    </div>
+                </div>
+
+                <div class="readout">
+                    <div class="readout-laps" id="lapsText">2.5바퀴</div>
+                    <div class="readout-sub" id="distText">1,000m · 1바퀴 400m 기준 · 6:00 페이스로 약 6분 00초</div>
+                </div>
+            </div>
         </section>
 
         <section>
@@ -284,6 +543,7 @@
         <div class="countdown-text" id="countdownText">잠시 후 출발합니다</div>
         <div class="countdown-number" id="countdownNumber">7</div>
         <div class="countdown-go" id="countdownGo">출발!</div>
+        <div class="run-summary" id="runSummary"></div>
     </div>
 
     <script>
@@ -313,21 +573,28 @@
             oscillator.stop(audioCtx.currentTime + duration);
         }
 
+        /* 1바퀴 = 400m 기준 */
+        const LAP_METERS = 400;
+        const STEP_METERS = 100;
+        const MIN_METERS = 100;
+        const MAX_METERS = 42400;
+        const ITEM_H = 44;
+
         const data = {
             courses: [
-                { id: 'c1', ko: '한바퀴 400m', en: '1 Lap 400m' },
-                { id: 'c2', ko: '500m', en: '500m' },
-                { id: 'c3', ko: '1,000m', en: '1,000m' },
-                { id: 'c4', ko: '2,000m', en: '2,000m' },
-                { id: 'c5', ko: '10,000m', en: '10,000m' },
-                { id: 'c6', ko: '42,195m', en: '42,195m' }
+                { id: 'c1', ko: '한바퀴 400m', en: '1 Lap 400m', meters: 400 },
+                { id: 'c2', ko: '500m', en: '500m', meters: 500 },
+                { id: 'c3', ko: '1,000m', en: '1,000m', meters: 1000 },
+                { id: 'c4', ko: '2,000m', en: '2,000m', meters: 2000 },
+                { id: 'c5', ko: '10,000m', en: '10,000m', meters: 10000 },
+                { id: 'c6', ko: '42,195m', en: '42,195m', meters: 42195 }
             ],
             // 문서에 명시된 4가지 페이스와 RGB 색상값을 Hex 코드로 변환하여 적용
             levels: [
-                { id: 'l1', ko: '6:30 /km', en: '6:30 /km', descKo: '스카이 블루', descEn: 'Sky Blue', color: '#0096FF' }, // 0, 150, 255
-                { id: 'l2', ko: '6:00 /km', en: '6:00 /km', descKo: '민트 그린', descEn: 'Mint Green', color: '#00FF96' }, // 0, 255, 150
-                { id: 'l3', ko: '5:30 /km', en: '5:30 /km', descKo: '네온 옐로우', descEn: 'Neon Yellow', color: '#C8FF00' }, // 200, 255, 0
-                { id: 'l4', ko: '5:00 /km', en: '5:00 /km', descKo: '네온 레드', descEn: 'Neon Red', color: '#FF0032' }  // 255, 0, 50
+                { id: 'l1', ko: '6:30 /km', en: '6:30 /km', descKo: '스카이 블루', descEn: 'Sky Blue', color: '#0096FF', paceSec: 390 },
+                { id: 'l2', ko: '6:00 /km', en: '6:00 /km', descKo: '민트 그린', descEn: 'Mint Green', color: '#00FF96', paceSec: 360 },
+                { id: 'l3', ko: '5:30 /km', en: '5:30 /km', descKo: '네온 옐로우', descEn: 'Neon Yellow', color: '#C8FF00', paceSec: 330 },
+                { id: 'l4', ko: '5:00 /km', en: '5:00 /km', descKo: '네온 레드', descEn: 'Neon Red', color: '#FF0032', paceSec: 300 }
             ],
             ui: {
                 ko: {
@@ -336,7 +603,15 @@
                     levelTitle: '페이스 선택 (가이드 LED 색상)',
                     startBtn: '러닝 시작',
                     waitText: '잠시 후 출발합니다',
-                    goText: '출발!'
+                    goText: '출발!',
+                    custom: '직접 입력',
+                    customLabel: '원하는 거리를 고르세요',
+                    hint: '위아래로 스크롤',
+                    lapUnit: '바퀴',
+                    lapBasis: '1바퀴 400m 기준',
+                    paceAt: '페이스로',
+                    approx: '약',
+                    summaryRun: '선택한 코스로 출발합니다'
                 },
                 en: {
                     title: 'SMART RUNNING',
@@ -344,7 +619,15 @@
                     levelTitle: 'Select Pace (Guide LED Color)',
                     startBtn: 'START RUNNING',
                     waitText: 'Starting soon...',
-                    goText: 'GO!'
+                    goText: 'GO!',
+                    custom: 'Custom',
+                    customLabel: 'Choose your distance',
+                    hint: 'Scroll up / down',
+                    lapUnit: 'laps',
+                    lapBasis: '1 lap = 400m',
+                    paceAt: 'pace',
+                    approx: 'approx.',
+                    summaryRun: 'Starting with your selection'
                 }
             }
         };
@@ -352,26 +635,82 @@
         let currentLang = 'ko';
         let selectedCourse = 'c1';
         let selectedLevel = 'l2'; // 기본값: 6:00/km (민트 그린)
+        let customMeters = 1000;  // 직접 입력 거리 기본값 1,000m (2.5바퀴)
+        let pickerEl = null;
+        let pickerIndex = -1;
+        let pickerBuilt = false;
+        let scrollTimer = null;
+
+        const DISTANCES = (function () {
+            const arr = [];
+            for (let d = MIN_METERS; d <= MAX_METERS; d += STEP_METERS) arr.push(d);
+            return arr;
+        })();
 
         function init() {
             renderGrids();
             updateUI();
-            updateThemeColor(); 
+            updateThemeColor();
+        }
+
+        function t() {
+            return data.ui[currentLang];
+        }
+
+        function fmtMeters(m) {
+            return m.toLocaleString('en-US') + 'm';
+        }
+
+        function fmtLaps(m) {
+            const v = Math.round((m / LAP_METERS) * 100) / 100;
+            const n = v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+            return currentLang === 'ko' ? `${n}${t().lapUnit}` : `${n} ${t().lapUnit}`;
+        }
+
+        function currentMeters() {
+            if (selectedCourse === 'custom') return customMeters;
+            const course = data.courses.find(c => c.id === selectedCourse);
+            return course ? course.meters : 0;
+        }
+
+        function currentPaceText() {
+            const level = data.levels.find(l => l.id === selectedLevel);
+            return level ? level[currentLang] : '';
+        }
+
+        function estLabel(m) {
+            const level = data.levels.find(l => l.id === selectedLevel);
+            const total = Math.round((m / 1000) * level.paceSec);
+            const h = Math.floor(total / 3600);
+            const mi = Math.floor((total % 3600) / 60);
+            const s = total % 60;
+            if (currentLang === 'ko') {
+                if (h > 0) return `약 ${h}시간 ${String(mi).padStart(2, '0')}분`;
+                return `약 ${mi}분 ${String(s).padStart(2, '0')}초`;
+            }
+            if (h > 0) return `approx. ${h} h ${String(mi).padStart(2, '0')} min`;
+            return `approx. ${mi} min ${String(s).padStart(2, '0')} s`;
         }
 
         function renderGrids() {
             const courseGrid = document.getElementById('courseGrid');
             const levelGrid = document.getElementById('levelGrid');
-            
+
             courseGrid.innerHTML = data.courses.map(course => `
-                <div class="option-btn course-btn ${selectedCourse === course.id ? 'selected' : ''}" 
+                <div class="option-btn course-btn ${selectedCourse === course.id ? 'selected' : ''}"
                      onclick="selectCourse('${course.id}')" id="btn_${course.id}">
                     ${course[currentLang]}
                 </div>
-            `).join('');
+            `).join('') + `
+                <div class="option-btn course-btn custom-btn ${selectedCourse === 'custom' ? 'selected' : ''}"
+                     onclick="openCustom()" id="btn_custom">
+                    <span>${t().custom}</span>
+                    <span class="custom-value" id="customBtnValue"></span>
+                </div>
+            `;
 
             levelGrid.innerHTML = data.levels.map(level => `
-                <div class="option-btn level-btn ${selectedLevel === level.id ? 'selected' : ''}" 
+                <div class="option-btn level-btn ${selectedLevel === level.id ? 'selected' : ''}"
                      onclick="selectLevel('${level.id}')" id="btn_${level.id}"
                      style="--level-color: ${level.color};">
                     <div class="color-dot"></div>
@@ -379,19 +718,29 @@
                     <span class="level-desc">${level[currentLang === 'ko' ? 'descKo' : 'descEn']}</span>
                 </div>
             `).join('');
+
+            updateCustomButton();
+            if (pickerBuilt) renderPickerItems();
         }
 
         function selectCourse(id) {
-            document.getElementById(`btn_${selectedCourse}`).classList.remove('selected');
+            if (selectedCourse === 'custom' && document.getElementById('btn_custom')) {
+                document.getElementById('btn_custom').classList.remove('selected');
+            } else if (document.getElementById(`btn_${selectedCourse}`)) {
+                document.getElementById(`btn_${selectedCourse}`).classList.remove('selected');
+            }
             selectedCourse = id;
-            document.getElementById(`btn_${selectedCourse}`).classList.add('selected');
+            const btn = document.getElementById(`btn_${id}`);
+            if (btn) btn.classList.add('selected');
+            closeCustom();
         }
 
         function selectLevel(id) {
             document.getElementById(`btn_${selectedLevel}`).classList.remove('selected');
             selectedLevel = id;
             document.getElementById(`btn_${selectedLevel}`).classList.add('selected');
-            updateThemeColor(); 
+            updateThemeColor();
+            updateReadout();
         }
 
         function updateThemeColor() {
@@ -405,16 +754,155 @@
             document.getElementById('btnEn').classList.toggle('active', lang === 'en');
             updateUI();
             renderGrids();
+            updateReadout();
         }
 
         function updateUI() {
-            const texts = data.ui[currentLang];
+            const texts = t();
             document.getElementById('appTitle').innerText = texts.title;
             document.getElementById('courseTitle').innerText = texts.courseTitle;
             document.getElementById('levelTitle').innerText = texts.levelTitle;
             document.getElementById('startBtn').innerText = texts.startBtn;
             document.getElementById('countdownText').innerText = texts.waitText;
             document.getElementById('countdownGo').innerText = texts.goText;
+            document.getElementById('customLabel').innerText = texts.customLabel;
+            document.getElementById('customHint').innerText = texts.hint;
+            document.getElementById('stepUp').innerText = '+ 1 ' + (currentLang === 'ko' ? '바퀴' : 'lap');
+            document.getElementById('stepDown').innerText = '− 1 ' + (currentLang === 'ko' ? '바퀴' : 'lap');
+        }
+
+        /* ---------- 직접 입력(스크롤 휠 피커) ---------- */
+
+        function renderPickerItems() {
+            pickerEl = document.getElementById('distancePicker');
+            pickerEl.innerHTML = DISTANCES.map((d, i) => `
+                <div class="picker-item" data-index="${i}" onclick="jumpToIndex(${i})">
+                    <span>${fmtMeters(d)}</span>
+                    <span class="lap">${fmtLaps(d)}</span>
+                </div>
+            `).join('');
+
+            pickerIndex = Math.max(0, DISTANCES.indexOf(customMeters));
+            setPickerScroll(pickerIndex, false);
+            markActive(pickerIndex);
+        }
+
+        function buildPicker() {
+            pickerEl = document.getElementById('distancePicker');
+            pickerEl.addEventListener('scroll', onPickerScroll, { passive: true });
+            if ('onscrollend' in window) {
+                pickerEl.addEventListener('scrollend', commitPicker);
+            }
+            pickerBuilt = true;
+            renderPickerItems();
+        }
+
+        function setPickerScroll(index, smooth) {
+            if (!pickerEl) return;
+            pickerEl.scrollTo({ top: index * ITEM_H, behavior: smooth ? 'smooth' : 'auto' });
+        }
+
+        function onPickerScroll() {
+            if (!pickerEl) return;
+            const idx = Math.min(DISTANCES.length - 1, Math.max(0, Math.round(pickerEl.scrollTop / ITEM_H)));
+            if (idx !== pickerIndex) {
+                pickerIndex = idx;
+                markActive(idx);
+                applyCustomMeters(DISTANCES[idx]);
+            }
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(commitPicker, 120);
+        }
+
+        function commitPicker() {
+            if (!pickerEl) return;
+            const idx = Math.min(DISTANCES.length - 1, Math.max(0, Math.round(pickerEl.scrollTop / ITEM_H)));
+            pickerIndex = idx;
+            markActive(idx);
+            applyCustomMeters(DISTANCES[idx]);
+            setPickerScroll(idx, true);
+        }
+
+        function markActive(idx) {
+            if (!pickerEl) return;
+            const items = pickerEl.children;
+            for (let i = 0; i < items.length; i++) {
+                items[i].classList.toggle('active', i === idx);
+            }
+        }
+
+        function jumpToIndex(idx) {
+            pickerIndex = idx;
+            setPickerScroll(idx, true);
+            applyCustomMeters(DISTANCES[idx]);
+        }
+
+        function stepLaps(dir) {
+            if (!pickerBuilt) buildPicker();
+            const next = Math.min(DISTANCES.length - 1, Math.max(0, pickerIndex + dir * (LAP_METERS / STEP_METERS)));
+            jumpToIndex(next);
+        }
+
+        function applyCustomMeters(m) {
+            customMeters = m;
+            updateCustomButton();
+            updateReadout();
+        }
+
+        function updateCustomButton() {
+            const valEl = document.getElementById('customBtnValue');
+            const btn = document.getElementById('btn_custom');
+            if (!valEl || !btn) return;
+            valEl.innerText = `${fmtMeters(customMeters)} · ${fmtLaps(customMeters)}`;
+            btn.classList.toggle('has-value', customMeters > 0);
+        }
+
+        function updateReadout() {
+            const m = currentMeters();
+            const lapsEl = document.getElementById('lapsText');
+            const distEl = document.getElementById('distText');
+            if (!lapsEl || !distEl) return;
+            lapsEl.innerText = fmtLaps(m);
+            if (currentLang === 'ko') {
+                distEl.innerText = `${fmtMeters(m)} · ${t().lapBasis} · ${currentPaceText()} ${t().paceAt} ${estLabel(m)}`;
+            } else {
+                distEl.innerText = `${fmtMeters(m)} · ${t().lapBasis} · ${estLabel(m)} at ${currentPaceText()}`;
+            }
+        }
+
+        function openCustom() {
+            selectedCourse = 'custom';
+            data.courses.forEach(c => {
+                const b = document.getElementById(`btn_${c.id}`);
+                if (b) b.classList.remove('selected');
+            });
+            document.getElementById('btn_custom').classList.add('selected');
+
+            const panel = document.getElementById('customPanel');
+            panel.classList.add('open');
+            if (!pickerBuilt) {
+                buildPicker();
+            } else {
+                pickerIndex = Math.max(0, DISTANCES.indexOf(customMeters));
+                setPickerScroll(pickerIndex, false);
+                markActive(pickerIndex);
+            }
+            updateCustomButton();
+            updateReadout();
+            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function closeCustom() {
+            const panel = document.getElementById('customPanel');
+            if (panel) panel.classList.remove('open');
+        }
+
+        function summaryText() {
+            const m = currentMeters();
+            const courseLabel = selectedCourse === 'custom'
+                ? `${fmtMeters(m)} (${t().custom})`
+                : data.courses.find(c => c.id === selectedCourse)[currentLang];
+            return `${courseLabel} · ${fmtLaps(m)} · ${currentPaceText()} · ${estLabel(m)}`;
         }
 
         function startRun() {
@@ -424,11 +912,14 @@
             const numberEl = document.getElementById('countdownNumber');
             const textEl = document.getElementById('countdownText');
             const goEl = document.getElementById('countdownGo');
-            
+            const summaryEl = document.getElementById('runSummary');
+
+            summaryEl.innerText = summaryText();
+
             numberEl.style.display = 'block';
             textEl.style.display = 'block';
             goEl.style.display = 'none';
-            
+
             let count = 7;
             numberEl.innerText = count;
             overlay.classList.add('active');
@@ -454,10 +945,16 @@
         }
 
         function resetToDefault() {
-            selectedCourse = 'c1'; 
+            selectedCourse = 'c1';
             selectedLevel = 'l2'; // 초기화 시 6:00/km 로 복구
+            closeCustom();
             setLanguage('ko');
-            updateThemeColor();     
+            updateThemeColor();
+            updateReadout();
+            const btn = document.getElementById('btn_c1');
+            if (btn) btn.classList.add('selected');
+            const customBtn = document.getElementById('btn_custom');
+            if (customBtn) customBtn.classList.remove('selected');
         }
 
         window.onload = init;
