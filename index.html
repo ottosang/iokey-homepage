@@ -186,7 +186,8 @@
 
         function performLogin() {
             var password = pwInput.value.trim(); 
-            if(password === '1609') {
+            var validPasswords = ['1609', '1728', '0220'];
+            if(validPasswords.indexOf(password) !== -1) {
                 document.getElementById('pw-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
             } else { 
