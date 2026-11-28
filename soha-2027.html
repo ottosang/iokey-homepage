@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2027 제주 소하스테이 리뉴얼 종합 사업기획서 | (주)디앤테크</title>
+<meta name="description" content="2027 제주 소하스테이(SOHA STAY) 리뉴얼 종합 사업기획서 — (주)디앤테크">
+<style>
+    :root {
+        --primary: #003366;
+        --primary-2: #0b4f8a;
+        --accent: #4a90e2;
+        --accent-soft: #eaf3fd;
+        --sand: #c9a227;
+        --dark: #121212;
+        --light: #f5f7fa;
+        --ink: #2b3440;
+        --muted: #5b6775;
+        --line: #dbe4ee;
+    }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+        font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+        line-height: 1.8; color: var(--ink); margin: 0; background: var(--light);
+        word-break: keep-all; overflow-wrap: break-word;
+    }
+    img { max-width: 100%; height: auto; }
+    a { color: var(--primary-2); }
+    a:hover { color: var(--accent); }
+
+    /* 1. 보안 접근 페이지 */
+    #pw-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0f1620; color: #fff;
+        display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 99999; overflow-y: auto; }
+    .pw-box { border: 1px solid #2b3947; padding: 44px 40px 34px; text-align: center; border-radius: 16px;
+        background: #16202c; width: 460px; max-width: 90%; box-sizing: border-box; margin: 20px auto; }
+    .pw-kicker { display: inline-block; font-size: 12px; letter-spacing: .22em; color: #8fb8e6; margin-bottom: 14px; }
+    .pw-box h1 { color: #fff; border-bottom: 1px solid #2e3d4d; padding-bottom: 16px; margin: 0 0 18px; font-size: 24px; line-height: 1.45; }
+    .pw-box p { font-size: 16px; margin: 0 0 24px; color: #b8c6d6; }
+    input[type="password"] { padding: 15px; width: 100%; margin-bottom: 18px; border-radius: 10px; border: 2px solid #33475b;
+        box-sizing: border-box; font-size: 18px; color: #000; text-align: center; letter-spacing: .18em; background: #fff; }
+    input[type="password"]:focus { outline: none; border-color: var(--accent); }
+    #login-btn { padding: 15px; width: 100%; background-color: #1f5fa8; color: #fff; border: none; border-radius: 10px;
+        cursor: pointer; font-weight: 700; font-size: 17px; display: block; margin-bottom: 20px; }
+    #login-btn:hover { background-color: #174b86; }
+    .legal-notice { font-size: 12px; color: #93a3b5; margin-top: 20px; text-align: left; border-top: 1px solid #2b3947;
+        padding-top: 15px; line-height: 1.65; word-break: keep-all; }
+
+    /* 2. 본문 */
+    #main-content { display: none; }
+    .content { max-width: 940px; margin: 40px auto 60px; background: #fff; padding: 0 0 56px; border-radius: 20px;
+        box-shadow: 0 12px 50px rgba(16, 38, 66, .10); box-sizing: border-box; overflow: hidden; }
+    .inner { padding: 0 60px; }
+
+    .hero { background: linear-gradient(135deg, #052a4d 0%, #0b4f8a 55%, #2c7ac0 100%); color: #fff; padding: 52px 60px 44px; }
+    .hero .kicker { font-size: 12.5px; letter-spacing: .2em; color: #a9cdf3; margin-bottom: 16px; }
+    .hero h1 { font-size: 34px; line-height: 1.4; margin: 0 0 8px; border: 0; padding: 0; color: #fff; letter-spacing: -.01em; }
+    .hero h1 span { display: block; font-size: 20px; font-weight: 500; color: #d6e8fb; margin-top: 10px; letter-spacing: 0; }
+    .hero-meta { margin-top: 22px; font-size: 14px; color: #cfe3f8; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .chip { font-size: 13px; background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.28);
+        border-radius: 999px; padding: 6px 14px; color: #eaf4ff; }
+
+    .content h2 { color: var(--primary); font-size: 23px; line-height: 1.45; margin: 54px 0 18px; padding: 13px 20px;
+        background: #eef6ff; border-radius: 10px; border-left: 5px solid var(--primary); display: flex; align-items: baseline; gap: 10px; }
+    .content h2 .num { font-size: 13px; font-weight: 700; color: #fff; background: var(--primary); border-radius: 6px; padding: 3px 9px; letter-spacing: .02em; }
+    .content h3 { color: var(--primary-2); font-size: 18px; margin: 30px 0 10px; }
+    .content p { margin: 0 0 14px; font-size: 15.5px; }
+    .lead { font-size: 16px; color: #33414f; }
+    .intro-box { background: #f7fbff; border: 1px solid #d9e9f9; border-radius: 14px; padding: 26px 28px; margin: 26px 0 8px; }
+    .intro-box h2 { margin-top: 0; }
+    .intro-box p:last-child { margin-bottom: 0; }
+
+    .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 20px 0; }
+    table { width: 100%; border-collapse: collapse; background: #fff; margin: 0; }
+    th, td { border: 1px solid var(--line); padding: 13px 15px; text-align: left; vertical-align: top; font-size: 14.5px; }
+    th { background: #f2f7fd; font-weight: 700; color: var(--primary); white-space: nowrap; }
+    td.k { background: #fafcfe; font-weight: 700; color: var(--primary); width: 26%; }
+    .table-wrap.wide table { min-width: 660px; }
+
+    ul { padding-left: 22px; margin: 0 0 14px; }
+    li { margin-bottom: 7px; font-size: 15px; }
+    li b, li strong { color: var(--primary); }
+
+    .cap-list { list-style: none; padding: 0; margin: 18px 0 6px; display: grid; gap: 10px; }
+    .cap-list li { margin: 0; background: #fafcff; border: 1px solid #e3edf8; border-left: 3px solid var(--accent);
+        border-radius: 8px; padding: 13px 16px; font-size: 14.6px; line-height: 1.75; }
+    .cap-list li b { display: block; color: var(--primary); margin-bottom: 2px; }
+
+    /* 전략 카드 */
+    .strategy { border: 1px solid var(--line); border-radius: 14px; margin: 22px 0; overflow: hidden; background: #fff; }
+    .strategy-head { padding: 18px 22px 16px; background: #f6faff; border-bottom: 1px solid var(--line); display: flex; gap: 14px; align-items: flex-start; }
+    .strategy-no { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; background: var(--primary); color: #fff;
+        font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+    .strategy-head h3 { margin: 2px 0 0; font-size: 18px; line-height: 1.45; color: var(--primary); }
+    .strategy-head .sub { display: block; font-size: 13px; font-weight: 500; color: var(--muted); margin-top: 5px; line-height: 1.5; }
+    .strategy-body { padding: 6px 22px 18px; }
+    .label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: #5f7fa0; margin: 18px 0 8px; }
+    .label::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 7px; vertical-align: 1px; }
+    .effect { list-style: none; padding: 0; margin: 0 0 4px; }
+    .effect li { position: relative; padding-left: 24px; margin-bottom: 6px; font-size: 14.8px; color: #2f3d4c; }
+    .effect li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+    .badge { display: inline-block; font-size: 12px; font-weight: 700; color: #1c5fa8; background: var(--accent-soft);
+        border: 1px solid #cfe4fa; border-radius: 999px; padding: 3px 11px; margin: 0 0 10px; }
+    .badge.sand { color: #7a5c00; background: #fdf6e0; border-color: #f0e0aa; }
+    .video-link { display: inline-flex; align-items: center; gap: 9px; margin: 12px 0 4px; padding: 11px 18px;
+        background: #ff2f2f; color: #fff; text-decoration: none; font-weight: 700; font-size: 14.5px; border-radius: 9px; }
+    .video-link:hover { background: #d81f1f; color: #fff; }
+    .video-link .dot { width: 0; height: 0; border-left: 8px solid #fff; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+
+    /* 기대 효과 카드 */
+    .effect-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0 6px; }
+    .effect-card { background: #f7fbff; border: 1px solid #d9e9f9; border-top: 4px solid var(--accent); border-radius: 12px; padding: 20px 20px 16px; }
+    .effect-card .tag { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; color: #1c5fa8; }
+    .effect-card h4 { margin: 8px 0 10px; font-size: 16.5px; line-height: 1.45; color: var(--primary); }
+    .effect-card p { margin: 0; font-size: 14.3px; color: #44515f; line-height: 1.72; }
+
+    .note { background: #fdfaf0; border-left: 4px solid var(--sand); padding: 12px 16px; margin: 16px 0; font-size: 14.5px; color: #55504a; border-radius: 0 8px 8px 0; }
+
+    .toc { margin: 28px 0 8px; border: 1px solid var(--line); border-radius: 12px; padding: 20px 24px; background: #fbfdff; }
+    .toc h2 { margin: 0 0 12px !important; font-size: 15px !important; background: none !important; border: 0 !important; padding: 0 !important; color: var(--primary-2) !important; letter-spacing: .04em; }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .toc li { margin-bottom: 6px; font-size: 14.6px; }
+    .toc a { text-decoration: none; color: #2c4a68; border-bottom: 1px solid #d5e4f2; }
+    .toc a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+    footer.doc-foot { margin: 50px 60px 0; padding-top: 22px; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--muted); }
+    footer.doc-foot b { color: var(--primary); }
+    footer.doc-foot .fine { font-size: 12px; color: #8a95a1; margin-top: 10px; line-height: 1.7; }
+
+    /* 3. 모바일 */
+    @media (max-width: 760px) {
+        body { line-height: 1.75; }
+        #pw-screen { padding: 24px 0; justify-content: flex-start; }
+        .pw-box { padding: 30px 22px 26px; max-width: calc(100% - 32px); }
+        .pw-box h1 { font-size: 19px; padding-bottom: 13px; margin-bottom: 14px; }
+        .pw-box p { font-size: 14.5px; margin-bottom: 18px; }
+        input[type="password"] { padding: 13px; font-size: 16px; margin-bottom: 14px; }
+        #login-btn { padding: 14px; font-size: 16px; margin-bottom: 16px; }
+        .legal-notice { font-size: 11px; }
+        .content { margin: 0; border-radius: 0; box-shadow: none; max-width: 100%; padding-bottom: 40px; }
+        .hero { padding: 34px 20px 30px; }
+        .hero .kicker { font-size: 11px; letter-spacing: .16em; margin-bottom: 12px; }
+        .hero h1 { font-size: 23px; }
+        .hero h1 span { font-size: 15px; margin-top: 8px; }
+        .hero-meta { font-size: 12.5px; margin-top: 16px; }
+        .chips { gap: 6px; margin-top: 14px; }
+        .chip { font-size: 11.5px; padding: 5px 10px; }
+        .inner { padding: 0 18px; }
+        .content h2 { font-size: 17.5px; margin: 34px 0 14px; padding: 11px 14px; border-left-width: 4px; gap: 8px; }
+        .content h2 .num { font-size: 11.5px; padding: 2px 7px; }
+        .content h3 { font-size: 16px; margin: 22px 0 8px; }
+        .content p { font-size: 14.8px; }
+        .lead { font-size: 15px; }
+        .intro-box { padding: 18px 16px; }
+        .toc { padding: 16px 16px; }
+        .toc li { font-size: 13.8px; }
+        table { font-size: 13.5px; }
+        th, td { padding: 9px 10px; }
+        td.k { width: 30%; }
+        .table-wrap { margin: 16px 0; }
+        ul { padding-left: 18px; }
+        li { font-size: 14.3px; }
+        .cap-list li { padding: 12px 13px; font-size: 13.9px; }
+        .strategy { margin: 16px 0; border-radius: 12px; }
+        .strategy-head { padding: 15px 15px 13px; gap: 10px; }
+        .strategy-no { width: 28px; height: 28px; font-size: 13px; }
+        .strategy-head h3 { font-size: 16px; }
+        .strategy-head .sub { font-size: 12px; }
+        .strategy-body { padding: 4px 15px 16px; }
+        .label { font-size: 11.5px; margin: 16px 0 7px; }
+        .effect li { font-size: 14px; padding-left: 21px; }
+        .video-link { display: flex; justify-content: center; width: 100%; box-sizing: border-box; font-size: 14px; padding: 12px 14px; }
+        .effect-grid { grid-template-columns: 1fr; gap: 12px; }
+        .effect-card { padding: 17px 16px 14px; }
+        .effect-card h4 { font-size: 15.5px; }
+        .effect-card p { font-size: 14px; }
+        footer.doc-foot { margin: 36px 18px 0; }
+    }
+    @media (max-width: 400px) {
+        .hero h1 { font-size: 21px; }
+        .content h2 { font-size: 16.5px; padding: 10px 12px; }
+        .strategy-head h3 { font-size: 15.3px; }
+        table { font-size: 12.8px; }
+        th, td { padding: 8px; }
+    }
+</style>
+</head>
+<body>
+
+<div id="pw-screen">
+    <div class="pw-box">
+        <span class="pw-kicker">SOHA STAY · JEJU</span>
+        <h1>2027 소하스테이<br>리뉴얼 종합 사업기획서</h1>
+        <p>문서 열람을 위해 비밀번호를 입력해 주세요.</p>
+
+        <label for="pw-input" style="position:absolute;left:-9999px;">비밀번호</label>
+        <input type="password" id="pw-input" placeholder="비밀번호" autocomplete="off">
+        <button id="login-btn">문서 접근</button>
+
+        <div class="legal-notice">
+            [법적 고지]<br>
+            본 기획서의 모든 기획 내용, 기술 사양 및 디자인은 (주)디앤테크의 지적 자산입니다.
+            승인되지 않은 복제, 배포 및 공유를 엄격히 금지하며, 위반 시 관련 법령에 의거하여 처벌받을 수 있습니다.
+        </div>
+    </div>
+</div>
+
+<div id="main-content">
+<div class="content">
+
+    <div class="hero">
+        <div class="kicker">SOHA STAY · JEJU SEONGSAN · 2027 RENEWAL PLAN</div>
+        <h1>2027 제주 소하스테이(SOHA STAY)<br>리뉴얼 종합 사업기획서
+            <span>체류형 복합 힐링·액티비티 리조트로의 전환</span>
+        </h1>
+        <div class="hero-meta">기획 및 총괄 운영 · (주)디앤테크 &nbsp;|&nbsp; 제주특별자치도 서귀포시 성산읍 오조로 8-12</div>
+        <div class="chips">
+            <span class="chip">독채 8개동</span>
+            <span class="chip">7대 핵심 전략</span>
+            <span class="chip">2027년 4월 스몰웨딩 확정</span>
+            <span class="chip">2026년 4분기 착수</span>
+        </div>
+    </div>
+
+    <div class="inner">
+
+    <div class="intro-box">
+        <h2><span class="num">도입</span>들어가며 — 1년의 현장 경험 위에 세운 2027년 사업안</h2>
+        <p>지난 1년간 소하스테이를 직접 운영하며, 이 단지의 강점이 어디서 빛나고 어디서 한계에 부딪히는지를 현장에서 하나씩 확인해 왔습니다. 이 기획서는 그 경험과 시행착오를 밑바탕으로, 2027년 한 단계 더 도약하고 안정적인 수익 구조를 정착시키기 위해 마련한 사업안입니다. 책상 위의 구상이 아니라 실제 운영에서 검증된 실행 가능한 방안만 담았으며, 단지의 자산 가치를 한 단계 높이고 현장 운영의 책임을 다하겠다는 마음으로 준비했습니다.</p>
+    </div>
+
+    <div class="toc">
+        <h2>목차</h2>
+        <ol>
+            <li><a href="#overview">사업 개요</a></li>
+            <li><a href="#capacity">추진 배경 및 운영사 핵심 역량</a></li>
+            <li><a href="#strategies">7대 핵심 리뉴얼 추진 전략</a></li>
+            <li><a href="#roadmap">단계별 추진 로드맵</a></li>
+            <li><a href="#effects">종합 기대 효과</a></li>
+        </ol>
+    </div>
+
+    <h2 id="overview"><span class="num">개요</span>사업 개요</h2>
+    <div class="table-wrap">
+    <table>
+        <tr><th style="width:26%;">구분</th><th>내용</th></tr>
+        <tr><td class="k">사업 대상지</td><td>제주특별자치도 서귀포시 성산읍 오조로 8-12 (소하스테이 전 단지 8개동 및 부대 공간)</td></tr>
+        <tr><td class="k">기획 및 총괄 운영</td><td>(주)디앤테크 (보안·IoT 시스템 구축 30년 이상, 리조트·관광사업 운영 전문사 / <a href="https://www.iokey.kr" target="_blank" rel="noopener">www.iokey.kr</a>)</td></tr>
+        <tr><td class="k">목표 연도</td><td>2027년 (전면 리뉴얼 및 신규 비즈니스 모델 정식 가동)</td></tr>
+    </table>
+    </div>
+
+    <h2 id="capacity"><span class="num">01</span>추진 배경 및 운영사 핵심 역량</h2>
+
+    <h3>1.1 프로젝트 추진 배경</h3>
+    <p>제주 성산일출봉 조망과 프라이빗 독채(전 객실 전용 수영장 및 개별 바베큐장 완비)라는 최상급 하드웨어 경쟁력을 바탕으로, 2027년 차세대 리뉴얼 사업 모델을 융합하고자 합니다. 기존의 단순 숙박 제공 형태에서 벗어나 고객의 체류 경험을 극대화하는 '제주 대표 체류형 복합 힐링·액티비티 리조트'로 포지셔닝을 고도화합니다.</p>
+
+    <h3>1.2 (주)디앤테크의 30년 전문성 및 역량</h3>
+    <p>본 프로젝트의 성공적 이행을 위해 (주)디앤테크가 30년 이상 축적한 보안·IoT 시스템 구축 경험과 리조트·관광사업 운영 노하우가 전면 투입됩니다. (주)디앤테크는 공식 홈페이지(<a href="https://www.iokey.kr" target="_blank" rel="noopener">www.iokey.kr</a>)에서 밝히고 있듯 Magnetic 카드·SMART 카드·RFID·QR·바코드 등 자동인식 핵심 기술을 모두 보유한 보안 시스템 전문 기업이며, 그 기술 위에 숙박·관광 현장에 필요한 IoT 서비스를 자체 개발·공급해 왔습니다.</p>
+
+    <ul class="cap-list">
+        <li><b>보안·IoT 시스템 30년 이상 구축 경험</b>보안 출입·검표·결제 시스템을 직접 설계·시공·운영해 온 자동인식 핵심 기술과 국내 최고 수준의 구축 실적을 보유합니다.</li>
+        <li><b>핵심 솔루션 자체 보유</b>ioKey(비대면 체크인·객실 제어·출입 통제), ioTram(RFID 기반 모노레일·트램 위치 관제), ioTrack(LED 러닝 페이서)을 자사 기술로 개발·공급합니다. 본 기획서의 전략 2(무인 체크인·아웃), 전략 6(러닝 페이서), 전략 7(스마트 보안)은 외주가 아닌 자사 솔루션으로 시공하고 유지보수까지 책임집니다.</li>
+        <li><b>대표 납품 실적</b>금강산관광지역 자체 결제 시스템, 용평리조트 에니포레 모노레일 관제시스템, 하이원리조트 출입통제 시스템, 휘닉스파크 티켓 발권·자동 검표 시스템, 국내 최초 공공자전거 시스템(창원시), 부산국제영화제 ID카드 발급·검표 시스템.</li>
+        <li><b>리조트·관광사업 운영 노하우</b>리조트·독채 스테이·관광 시설을 직접 기획·운영해 온 트랙 레코드를 보유합니다.</li>
+        <li><b>통합 수익 관리(Revenue Management)</b>OTA 판매 최적화 및 PMS 연동을 통한 객실 가동률(OCC)과 평균 단가(ADR) 동시 상승 전략 수행.</li>
+        <li><b>공간 기획 및 콘텐츠 개발</b>단순 시설 관리 차원을 넘어, 지역 고유 콘텐츠와 첨단 IT 기술을 접목한 독창적 공간 경험 창출. 호텔아트페어 운영 경험을 바탕으로 한 아트 마케팅·전시 기획 역량 보유.</li>
+    </ul>
+
+    <h2 id="strategies"><span class="num">02</span>7대 핵심 리뉴얼 추진 전략</h2>
+
+    <!-- 전략 1 -->
+    <div class="strategy">
+        <div class="strategy-head">
+            <div class="strategy-no">1</div>
+            <h3>브랜드 업스케일링 <span class="sub">Brand Upscaling</span></h3>
+        </div>
+        <div class="strategy-body">
+            <span class="label">배경 및 목표</span>
+            <p>기존 펜션/독채 스테이 이미지를 넘어서는 브랜드 고급화를 추진합니다. 성산일출봉과 돌담 등 제주의 자연 요소와 어우러지는 하이엔드 프라이빗 독채 브랜드로 포지셔닝을 고도화합니다.</p>
+            <span class="label">실행 방안</span>
+            <ul>
+                <li><b>프리미엄 BI 구축 및 공간 디자인 통일:</b> 성산의 자연경관과 어우러지는 시그니처 BI(Brand Identity) 개발, 메인 입구 대형 간판 및 단지 내 안내 사인물 전면 교체, 객실 전용 프리미엄 어메니티 및 웰컴 키트 연출.</li>
+                <li><b>하이엔드 시즌 패키지 및 VIP 마케팅:</b> 성산일출봉 일출·일몰 뷰와 성산일출축제 불꽃놀이를 객실 내에서 프라이빗하게 직관할 수 있는 전용 시즌 패키지 개발 및 타깃 마케팅 추진.</li>
+            </ul>
+            <span class="label">기대 효과</span>
+            <ul class="effect">
+                <li>객실 평균 단가(ADR) 증대 및 브랜드 충성도 제고.</li>
+                <li>자사 플랫폼을 통한 직예약 비중 확대로 OTA 수수료 절감.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 전략 2 -->
+    <div class="strategy">
+        <div class="strategy-head">
+            <div class="strategy-no">2</div>
+            <h3>AI 기반 스마트 예약 및 무인 자동화 시스템 구축</h3>
+        </div>
+        <div class="strategy-body">
+            <span class="label">배경 및 목표</span>
+            <p>예약, 체크인/아웃, 24시간 고객 응대 프로세스 전반에 AI 및 자동화 기술을 도입하여 운영 효율성을 극대화하고 스마트한 고객 경험을 제공합니다.</p>
+            <span class="label">실행 방안</span>
+            <ul>
+                <li><b>AI 기반 RMS/PMS 동기화 및 다이내믹 프라이싱:</b> 마진맥스, 에어비앤비, 인스타그램 등 멀티 채널 캘린더의 실시간 동기화로 오버부킹을 차단하고, 시즌·수요 예측 알고리즘 기반 AI 요금 자동 산정(Dynamic Pricing) 적용.</li>
+                <li><b>다국어 AI 챗봇 컨시어지:</b> 24시간 실시간 고객 응대가 가능한 AI 챗봇을 도입하여 예약 문의, 주변 관광지/맛집 추천, 시설 이용 안내를 다국어로 지원.</li>
+                <li><b>비대면 모바일 체크인·아웃 자동화:</b> 모바일 스마트 도어락 임시 비밀번호 자동 발급 시스템 구축 및 퇴실 알림에 맞춘 하우스키핑 자동 배정 프로세스 연동.</li>
+            </ul>
+            <span class="label">기대 효과</span>
+            <ul class="effect">
+                <li>단순 반복 CS 및 인건비 대폭 절감.</li>
+                <li>심야 및 외국인 관광객의 예약 전환율 제고.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 전략 3 -->
+    <div class="strategy">
+        <div class="strategy-head">
+            <div class="strategy-no">3</div>
+            <h3>고객 전용 부스 운영 <span class="sub">부가서비스 고도화 및 신규 수익 창출</span></h3>
+        </div>
+        <div class="strategy-body">
+            <span class="label">배경 및 목표</span>
+            <p>투숙객의 이용 편의성을 끌어올리는 동시에, 고마진 부가 서비스 파이프라인을 다각화하여 매출 구조를 견고히 구축합니다.</p>
+            <span class="label">실행 방안</span>
+            <ul>
+                <li><b>스마트 무인/하이브리드 컨시어지 부스 구축:</b> 단지 내 중심 거점에 투숙객 전용 '소하 스마트 고객 부스' 설치.</li>
+                <li><b>원스톱 서비스 제공:</b> 온수 수영장 가동 요청, 개별 바베큐(숯·그릴 세트), 불멍 키트, 추가 침구류, 로컬 F&amp;B(제주 특산 간식·와인·조식 세트) 및 액티비티 대여 서비스를 키오스크 및 앱을 통해 간편히 결제 및 수령.</li>
+            </ul>
+            <span class="label">기대 효과</span>
+            <ul class="effect">
+                <li>객실 외 현장 부가매출(Ancillary Revenue) 증대.</li>
+                <li>투숙객의 단지 내 체류 만족도 극대화.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 전략 4 -->
+    <div class="strategy">
+        <div class="strategy-head">
+            <div class="strategy-no">4</div>
+            <h3>봄빛 가든 파티 &amp; 프라이빗 스몰웨딩 <span class="sub">봄 시즌 야외 스몰웨딩 및 프라이빗 연회 기획</span></h3>
+        </div>
+        <div class="strategy-body">
+            <span class="badge sand">2027년 4월 스몰웨딩 예약 확정 · 준비 중</span>
+            <span class="label">배경 및 목표</span>
+            <p>봄철 성산 지역의 온화한 기후와 넓은 프라이빗 잔디 마당, 독채 인프라를 활용하여 프리미엄 스몰웨딩 및 연회 시장을 공략하며, 봄 시즌 상품은 '봄빛 가든 파티 &amp; 프라이빗 스몰웨딩'이라는 이름으로 운영합니다. 특히 2027년 4월 스몰웨딩은 이미 예약이 확정되어 현재 준비 중으로, 단순한 구상이 아니라 개장과 동시에 매출이 발생하는 실행 단계의 사업입니다.</p>
+            <span class="label">실행 방안</span>
+            <ul>
+                <li><b>2027년 4월 스몰웨딩 예약 확정·준비 중:</b> 2027년 4월 스몰웨딩이 이미 예약되어 현재 준비 중입니다. 리뉴얼 일정과 맞물려 완공과 동시에 매출이 발생하는 확정 수익이며, 첫 사례를 레퍼런스 삼아 봄 시즌 단체 예약을 확대합니다.</li>
+                <li><b>단지 전체 대관(Full Buyout) 패키지:</b> 8개 독채 객실과 야외 마당 공간을 전용 대관하여, 신랑·신부 및 하객이 1박 2일간 프라이빗하게 머무르는 하우스 파티형 웨딩 운영.</li>
+                <li><b>원스톱 디렉팅 서비스:</b> 로컬 플라워 아티스트 스타일링, 야외 파티 케이터링, 야간 핑거푸드 및 불멍 애프터파티 프로그램 등 통합 연출 제공.</li>
+            </ul>
+            <span class="label">기대 효과</span>
+            <ul class="effect">
+                <li>'봄빛 가든 파티 &amp; 프라이빗 스몰웨딩'의 첫 사례로 확정된 4월 스몰웨딩을 시작으로 봄철 준성수기 단체 매출 즉시 확보.</li>
+                <li>소셜 미디어(SNS) 바이럴을 통한 하이엔드 브랜드 이미지 각인.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 전략 5 -->
+    <div class="strategy">
+        <div class="strategy-head">
+            <div class="strategy-no">5</div>
+            <h3>소하 갤러리 스테이 <span class="sub">(주)디앤테크 호텔아트페어 경험 기반 신예작가 갤러리 조성</span></h3>
+        </div>
+        <div class="strategy-body">
+            <span class="badge">작품 구매 비용 없이 운영</span>
+            <span class="label">배경 및 목표</span>
+            <p>(주)디앤테크는 호텔아트페어를 직접 운영하며 호텔·리조트의 객실과 공용 공간을 전시장으로 바꾸는 아트 마케팅, 신예 작가·갤러리 네트워크를 축적해 왔습니다. 이 경험을 소하스테이에 그대로 옮겨, 신예 작가들의 작품을 유치해 8개 독채 객실 내부와 외부 정원·돌담길 전체를 갤러리 공간으로 조성하는 '소하 갤러리 스테이'를 추진합니다. 작품 유치·전시에 따른 별도의 작품 구매 비용이 들지 않는 구조로, 초기 시설·작품 매입 부담 없이 단지 전체를 하이엔드 문화·예술 스테이로 격상시키는 것이 목표입니다.</p>
+            <span class="label">실행 방안</span>
+            <ul>
+                <li><b>호텔아트페어 경험 기반 신예작가 유치:</b> (주)디앤테크가 호텔아트페어를 운영하며 쌓은 작가·갤러리 네트워크를 활용해 신예 작가들의 작품을 유치하고, 단지 규모와 객실별 콘셉트에 맞춰 큐레이션합니다. 작품은 작가·갤러리와의 협의로 유치·전시하며 작품 구매 비용은 발생하지 않습니다.</li>
+                <li><b>단지 전체 갤러리화 (객실·정원·돌담길):</b> 독채 객실 내부는 객실별 테마 전시로, 외부 정원과 돌담길은 야외 조형물·조명 연출로 구성해 단지 전체를 상시 관람 가능한 갤러리로 조성합니다. 산책 동선이 곧 관람 동선이 되어 투숙객의 체류 시간과 단지 내 소비를 자연스럽게 확장합니다.</li>
+                <li><b>시그니처 브랜드 포토존 연계:</b> 성산일출봉·제주 돌담과 어우러지는 대표 조형물 포토존을 아트 갤러리 동선의 중심에 배치해, 작품·조형물·자연이 한 화면에 담기는 포토스팟으로 완성하고 자발적 SNS 확산을 유도합니다.</li>
+                <li><b>작품 판매·아트 프로그램 연계 수익:</b> 전시 작품의 구매 문의·판매 중개 수수료와 신예 작가 워크숍·아트 투어 등 체험 상품을 부가 서비스로 운영하고, 전시 교체 시기마다 재방문 유인을 확보합니다.</li>
+            </ul>
+            <span class="label">기대 효과</span>
+            <ul class="effect">
+                <li>작품 매입·시설 투자 없이 단지 전체의 문화·예술 브랜드 가치를 끌어올려 하이엔드 아트 스테이로 포지셔닝.</li>
+                <li>작품 판매 수수료·아트 프로그램 등 신규 부가 수익과 포토존 SNS 확산의 시너지 창출.</li>
+                <li>전시 교체에 따른 재방문·장기 체류 유인 확대로 비수기 객실 판매 촉진.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 전략 6 -->
+    <div class="strategy">
+        <div class="strategy-head">
+            <div class="strategy-no">6</div>
+            <h3>스마트 LED 러닝 페이서 (LED Pacer) <span class="sub">단지-러닝코스 연계, 자사 ioTrack 솔루션</span></h3>
+        </div>
+        <div class="strategy-body">
+            <span class="label">배경 및 목표</span>
+            <p>성산읍 오조리 돌담 산책로와 첨단 LED 시스템을 결합하여, 글로벌 트렌드로 떠오른 '런트립(Run-trip)' 및 웰니스 수요를 수용하는 차별화된 야간 경관을 구축합니다.</p>
+            <span class="label">실행 방안</span>
+            <ul>
+                <li><b>스마트 LED 러닝 트랙 설치:</b> 8자 모양의 단지 둘레길 산책로 바닥 및 경계 라인에 자사 ioTrack 솔루션 기반으로 스마트 LED 러닝 페이서를 구축. 태블릿/앱을 통해 개별 러너의 목표 페이스 속도 지정 가능.</li>
+                <li><b>야간 나이트 러닝 및 웰니스 프로그램:</b> 야간 불빛을 따라 달리는 나이트 러닝 및 일출 타임 러닝 프로그램 운용.</li>
+                <li><b>연계 상품 구성:</b> 러닝 완주 인증 모바일 리워드 제공, 러닝 크루 전용 워케이션 및 스포츠 패키지 출시.</li>
+            </ul>
+            <a class="video-link" href="https://youtube.com/shorts/HqGaIsk7F3g?si=NI-990fH5bR0Bm7P" target="_blank" rel="noopener"><span class="dot"></span>현장 테스트 시연 영상 보기 (소하스테이 둘레길 실제 시연)</a>
+            <span class="label">기대 효과</span>
+            <ul class="effect">
+                <li>러닝·웰니스 특화 스테이로서의 유일무이한 랜드마크화.</li>
+                <li>주간과 야간을 모두 아우르는 시각적 경관 연출 및 마케팅 효과 극대화.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 전략 7 -->
+    <div class="strategy">
+        <div class="strategy-head">
+            <div class="strategy-no">7</div>
+            <h3>스마트 보안 시스템 강화 <span class="sub">Smart Security &amp; IoT Control</span></h3>
+        </div>
+        <div class="strategy-body">
+            <span class="label">배경 및 목표</span>
+            <p>투숙객의 프라이버시와 안전을 최우선으로 보호하고, 무인 자동화 운영 환경에서도 빈틈없는 단지 관제 및 객실 제어 인프라를 구축함.</p>
+            <span class="label">실행 방안</span>
+            <ul>
+                <li><b>① 주차게이트 번호판 인식(LPR) 시스템 도입:</b> 예약 확정 시 등록된 고객 차량번호를 자동 인식해 주차게이트 차단기를 개방하는 스마트 주차 관제를 구축하고, 외부인 및 비예약 차량의 무단 진입을 원천 차단합니다.</li>
+                <li><b>② 체크인 고객(투숙객) 출입통제:</b> 비대면 스마트 도어락과 단지 출입구를 예약 정보와 연동해, 체크인 시점부터 퇴실 시까지 유효한 임시 비밀번호로만 객실과 단지에 출입하도록 통제합니다. 체크인 전 출입 제한, 퇴실 즉시 비밀번호 만료, 외부인 출입 차단이 자동으로 처리됩니다.</li>
+                <li><b>③ 사각지대 없는 지능형 CCTV 도입:</b> 단지 외곽 돌담길, 주 진입로, 주차장, 공용 부대시설 및 아트 갤러리·전시 구역에 고화질·야간 적외선 CCTV를 촘촘히 배치해 24시간 안전 모니터링 체계를 구축합니다(객실 내부 및 프라이빗 풀 영역 제외, 개인정보 보호법 준수).</li>
+                <li><b>전 객실 스마트 IoT 통합 제어:</b> 조명, 냉난방기, 온수풀 히팅, 커튼 등 전 객실 주요 설비를 IoT로 연동하여 입실 전 적정 온도 사전 세팅과 퇴실 후 자동 절전 제어를 구현합니다. 스마트 도어락의 일회용 임시 비밀번호 발급·만료는 ②의 투숙객 출입통제와 하나의 체계로 묶여 예약 일정에 맞춰 자동 처리됩니다.</li>
+            </ul>
+            <span class="label">기대 효과</span>
+            <ul class="effect">
+                <li>프라이빗 독채 스테이에 걸맞은 최고 수준의 안전·보안 신뢰도 확보.</li>
+                <li>무인 운영 리스크 최소화 및 에너지 절감을 통한 운영 효율 극대화.</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 id="roadmap"><span class="num">03</span>단계별 추진 로드맵 <span style="font-size:13px;font-weight:500;color:#5b6775;">2026년 하반기 ~ 2027년</span></h2>
+    <div class="table-wrap wide">
+    <table>
+        <tr><th style="width:9%;">단계</th><th style="width:14%;">기간</th><th>주요 추진 내용</th><th style="width:18%;">비고</th></tr>
+        <tr>
+            <td><b>1단계</b></td>
+            <td>2026년 4분기</td>
+            <td>기반 구축 및 시스템 AI화, 위탁운영 체계 전환 및 신규 BI 적용, AI RMS/PMS 도입, 모바일 체크인/아웃 자동화 연동, 아트 갤러리·시그니처 포토존 및 스마트 LED 러닝 페이서 설계/시공, LPR 주차게이트·투숙객 출입통제·CCTV·IoT 인프라 등 스마트 보안 기반 설계</td>
+            <td>시스템 및 하드웨어 기초 작업</td>
+        </tr>
+        <tr>
+            <td><b>2단계</b></td>
+            <td>2027년 1분기</td>
+            <td>공간 리뉴얼 및 신예작가 아트 갤러리 오픈, 스마트 고객 전용 무인 부스 설치 및 테스트 운영, 신예작가 작품 유치·전시 및 시그니처 포토존 완공, 스마트 LED 러닝 트랙 가동 및 4월 스몰웨딩 예약 확정분 준비, 지능형 CCTV 관제센터 구축 및 스마트 IoT 연동 시험 운용</td>
+            <td>리뉴얼 완공 및 사전 프로모션</td>
+        </tr>
+        <tr>
+            <td><b>3단계</b></td>
+            <td>2027년 2분기</td>
+            <td>시그니처 이벤트 및 본격 운영, 예약 확정된 '봄빛 가든 파티 &amp; 프라이빗 스몰웨딩'(4월) 운영 및 정식 런칭, 봄/여름 성수기 시즌 대비 통합 마케팅 전개, 웰니스 러닝 코스 연계 패키지 상시 운용</td>
+            <td>2027 핵심 상품 본격 가동</td>
+        </tr>
+        <tr>
+            <td><b>4단계</b></td>
+            <td>2027년 하반기</td>
+            <td>고도화 및 연말 특수 극대화, 운영 데이터 분석을 통한 AI 다이내믹 요금 정책 최적화, 정기 러닝 크루 이벤트 및 웰니스 프로그램 정례화, 성산일출축제 및 연말연시 프리미엄 일출 패키지 운영</td>
+            <td>데이터 기반 운영 최적화</td>
+        </tr>
+    </table>
+    </div>
+
+    <h2 id="effects"><span class="num">04</span>종합 기대 효과</h2>
+    <div class="effect-grid">
+        <div class="effect-card">
+            <span class="tag">EFFECT 01</span>
+            <h4>브랜드 가치 제고 및<br>수익성 극대화</h4>
+            <p>하이엔드 독채 브랜드로의 포지셔닝을 통해 객실 평균 단가(ADR)와 연평균 가동률(OCC)을 동시에 향상시킵니다. 직예약 채널의 비중을 높여 OTA 수수료 부담을 대폭 감소시킵니다.</p>
+        </div>
+        <div class="effect-card">
+            <span class="tag">EFFECT 02</span>
+            <h4>운영 효율성 증대 및<br>매출 다변화</h4>
+            <p>AI 기반 무인 자동화와 다국어 AI 컨시어지 도입으로 인건비와 단순 반복 CS 업무를 줄이고, 스마트 무인 부스 및 전 객실 스마트 IoT 통합 제어를 통해 고마진 부가 매출(Ancillary Revenue) 파이프라인 확립 및 에너지를 효율적으로 절감합니다.</p>
+        </div>
+        <div class="effect-card">
+            <span class="tag">EFFECT 03</span>
+            <h4>차별화된 복합<br>리조트 랜드마크화</h4>
+            <p>스몰웨딩, 신예작가 아트 갤러리, 스마트 LED 러닝 트랙, 지능형 보안 인프라 등 단지 자체의 고유한 콘텐츠와 안정적인 보안 관제 체계를 확보하여 계절적 변동성을 최소화하고 사계절 체류형 복합 힐링 리조트로 입지를 공고히 합니다.</p>
+        </div>
+    </div>
+
+    </div><!-- /.inner -->
+
+    <footer class="doc-foot">
+        <b>2027 제주 소하스테이(SOHA STAY) 리뉴얼 종합 사업기획서</b> · 기획 및 총괄 운영 <b>(주)디앤테크</b> · <a href="https://www.iokey.kr" target="_blank" rel="noopener">www.iokey.kr</a>
+        <div class="fine">본 기획서의 모든 기획 내용, 기술 사양 및 디자인은 (주)디앤테크의 지적 자산입니다. 승인되지 않은 복제, 배포 및 공유를 엄격히 금지합니다.</div>
+    </footer>
+
+</div><!-- /.content -->
+</div><!-- /#main-content -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var loginBtn = document.getElementById('login-btn');
+        var pwInput = document.getElementById('pw-input');
+        var pwScreen = document.getElementById('pw-screen');
+        var mainContent = document.getElementById('main-content');
+
+        function performLogin() {
+            var password = pwInput.value.trim();
+            var validPasswords = ['0220'];
+            if (validPasswords.indexOf(password) !== -1) {
+                pwScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+                window.scrollTo(0, 0);
+                document.body.style.overflow = '';
+            } else {
+                alert('비밀번호가 일치하지 않습니다.');
+                pwInput.value = '';
+                pwInput.focus();
+            }
+        }
+
+        if (loginBtn) { loginBtn.addEventListener('click', performLogin); }
+
+        if (pwInput) {
+            pwInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter' || e.keyCode === 13) { performLogin(); }
+            });
+        }
+    });
+</script>
+</body>
+</html>
