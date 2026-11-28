@@ -127,6 +127,19 @@
     footer.doc-foot b { color: var(--primary); }
     footer.doc-foot .fine { font-size: 12px; color: #8a95a1; margin-top: 10px; line-height: 1.7; }
 
+    /* 로드맵: 모바일에서는 카드형으로 쌓기 */
+    @media (max-width: 760px) {
+        .table-wrap.wide { overflow: visible; }
+        table.roadmap { display: block; border: 0; min-width: 0; }
+        table.roadmap tbody { display: block; }
+        table.roadmap tr.head { display: none; }
+        table.roadmap tr { display: block; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+        table.roadmap td { display: block; border: 0; border-top: 1px solid #edf3f9; padding: 10px 13px; }
+        table.roadmap td:first-child { border-top: 0; background: #f2f7fd; color: var(--primary); font-weight: 700; font-size: 15px; }
+        table.roadmap td[data-l]::before { content: attr(data-l); display: block; font-size: 11px; font-weight: 700; letter-spacing: .04em; color: #5f7fa0; margin-bottom: 2px; }
+        table.roadmap td:first-child[data-l]::before { display: none; }
+    }
+
     /* 3. 모바일 */
     @media (max-width: 760px) {
         body { line-height: 1.75; }
@@ -436,31 +449,31 @@
 
     <h2 id="roadmap"><span class="num">03</span>단계별 추진 로드맵 <span style="font-size:13px;font-weight:500;color:#5b6775;">2026년 하반기 ~ 2027년</span></h2>
     <div class="table-wrap wide">
-    <table>
-        <tr><th style="width:9%;">단계</th><th style="width:14%;">기간</th><th>주요 추진 내용</th><th style="width:18%;">비고</th></tr>
+    <table class="roadmap">
+        <tr class="head"><th style="width:9%;">단계</th><th style="width:14%;">기간</th><th>주요 추진 내용</th><th style="width:18%;">비고</th></tr>
         <tr>
-            <td><b>1단계</b></td>
-            <td>2026년 4분기</td>
-            <td>기반 구축 및 시스템 AI화, 위탁운영 체계 전환 및 신규 BI 적용, AI RMS/PMS 도입, 모바일 체크인/아웃 자동화 연동, 아트 갤러리·시그니처 포토존 및 스마트 LED 러닝 페이서 설계/시공, LPR 주차게이트·투숙객 출입통제·CCTV·IoT 인프라 등 스마트 보안 기반 설계</td>
-            <td>시스템 및 하드웨어 기초 작업</td>
+            <td data-l="단계"><b>1단계</b></td>
+            <td data-l="기간">2026년 4분기</td>
+            <td data-l="주요 추진 내용">기반 구축 및 시스템 AI화, 위탁운영 체계 전환 및 신규 BI 적용, AI RMS/PMS 도입, 모바일 체크인/아웃 자동화 연동, 아트 갤러리·시그니처 포토존 및 스마트 LED 러닝 페이서 설계/시공, LPR 주차게이트·투숙객 출입통제·CCTV·IoT 인프라 등 스마트 보안 기반 설계</td>
+            <td data-l="비고">시스템 및 하드웨어 기초 작업</td>
         </tr>
         <tr>
-            <td><b>2단계</b></td>
-            <td>2027년 1분기</td>
-            <td>공간 리뉴얼 및 신예작가 아트 갤러리 오픈, 스마트 고객 전용 무인 부스 설치 및 테스트 운영, 신예작가 작품 유치·전시 및 시그니처 포토존 완공, 스마트 LED 러닝 트랙 가동 및 4월 스몰웨딩 예약 확정분 준비, 지능형 CCTV 관제센터 구축 및 스마트 IoT 연동 시험 운용</td>
-            <td>리뉴얼 완공 및 사전 프로모션</td>
+            <td data-l="단계"><b>2단계</b></td>
+            <td data-l="기간">2027년 1분기</td>
+            <td data-l="주요 추진 내용">공간 리뉴얼 및 신예작가 아트 갤러리 오픈, 스마트 고객 전용 무인 부스 설치 및 테스트 운영, 신예작가 작품 유치·전시 및 시그니처 포토존 완공, 스마트 LED 러닝 트랙 가동 및 4월 스몰웨딩 예약 확정분 준비, 지능형 CCTV 관제센터 구축 및 스마트 IoT 연동 시험 운용</td>
+            <td data-l="비고">리뉴얼 완공 및 사전 프로모션</td>
         </tr>
         <tr>
-            <td><b>3단계</b></td>
-            <td>2027년 2분기</td>
-            <td>시그니처 이벤트 및 본격 운영, 예약 확정된 '봄빛 가든 파티 &amp; 프라이빗 스몰웨딩'(4월) 운영 및 정식 런칭, 봄/여름 성수기 시즌 대비 통합 마케팅 전개, 웰니스 러닝 코스 연계 패키지 상시 운용</td>
-            <td>2027 핵심 상품 본격 가동</td>
+            <td data-l="단계"><b>3단계</b></td>
+            <td data-l="기간">2027년 2분기</td>
+            <td data-l="주요 추진 내용">시그니처 이벤트 및 본격 운영, 예약 확정된 '봄빛 가든 파티 &amp; 프라이빗 스몰웨딩'(4월) 운영 및 정식 런칭, 봄/여름 성수기 시즌 대비 통합 마케팅 전개, 웰니스 러닝 코스 연계 패키지 상시 운용</td>
+            <td data-l="비고">2027 핵심 상품 본격 가동</td>
         </tr>
         <tr>
-            <td><b>4단계</b></td>
-            <td>2027년 하반기</td>
-            <td>고도화 및 연말 특수 극대화, 운영 데이터 분석을 통한 AI 다이내믹 요금 정책 최적화, 정기 러닝 크루 이벤트 및 웰니스 프로그램 정례화, 성산일출축제 및 연말연시 프리미엄 일출 패키지 운영</td>
-            <td>데이터 기반 운영 최적화</td>
+            <td data-l="단계"><b>4단계</b></td>
+            <td data-l="기간">2027년 하반기</td>
+            <td data-l="주요 추진 내용">고도화 및 연말 특수 극대화, 운영 데이터 분석을 통한 AI 다이내믹 요금 정책 최적화, 정기 러닝 크루 이벤트 및 웰니스 프로그램 정례화, 성산일출축제 및 연말연시 프리미엄 일출 패키지 운영</td>
+            <td data-l="비고">데이터 기반 운영 최적화</td>
         </tr>
     </table>
     </div>
